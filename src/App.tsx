@@ -1,45 +1,39 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState, useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+
+import useRadioBrowser from "./hooks/useRadioBrowser";
+import RadioSearch from "./components/RadioSearch/RadioSearch";
+import RadioTab from "./components/RadioTab";
+import Indicator from "./components/Indicator";
+import useToggle from "./hooks/useToggle";
+import SwitchButton from "./components/SwitchButton";
+import SearchList from "./components/SearchList";
+import CollectionList from "./components/CollectionList";
+
+const App = () => {
+  const { getStations, isLoading, radios } = useRadioBrowser();
+  const { value, toggleValue } = useToggle();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <div className="App flex items-center justify-content h-full w-full">
+      <Indicator />
+      <SwitchButton value={value} toggleValue={toggleValue} />
+      {value ? <SearchList /> : <CollectionList />}
 
-export default App
+      {/* <button onClick={() => getStations()}>get</button>
+        {"radios: " + radios.length}
+        {console.log(radios)}
+        {radios && (
+          <AudioPlayer
+            autoPlay
+            src={radios[0].urlResolved}
+            onPlay={(e) => console.log("onPlay")}
+          />
+        )} */}
+    </div>
+  );
+};
+
+export default App;

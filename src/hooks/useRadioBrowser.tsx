@@ -12,14 +12,14 @@ interface queryParams {
   limit: number;
 }
 
-const useRadio = () => {
+const useRadioBrowser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [radios, setRadios] = useState([{}]);
   let initQuery = {
     countryCode: "US",
     tagList: ["jazz"],
     offset: 1,
-    limit: 5,
+    limit: 10,
   };
 
   const getStations = async (query: queryParams) => {
@@ -35,8 +35,9 @@ const useRadio = () => {
           limit: query.limit,
         })
         .then((data) => {
+          console.log(data);
           setIsLoading(false);
-          setRadios([...data, ...radios]);
+          setRadios(data);
         });
     } catch (e) {
       console.log(e);
@@ -50,4 +51,4 @@ const useRadio = () => {
   return { getStations, isLoading, radios };
 };
 
-export default useRadio;
+export default useRadioBrowser;

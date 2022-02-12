@@ -1,5 +1,4 @@
 import { useState } from "react";
-import RadioSearch from "./RadioSearch/RadioSearch";
 import SwitchButton from "./SwitchButton";
 import useToggle from "../hooks/useToggle";
 const RadioTab = () => {

@@ -1,5 +1,5 @@
-import { BiHomeSmile } from "react-icons/Bi";
-import { MdRadio } from "react-icons/md";
+// import { BiHomeSmile } from "react-icons/Bi";
+// import { MdRadio } from "react-icons/md";
 
 const Radio = (props) => {
   return (
@@ -10,13 +10,14 @@ const Radio = (props) => {
       {props.favicon ? (
         <img src={props.favicon} className="object-cover h-10 w-10" />
       ) : (
-        <MdRadio className="h-10 w-10" />
+        // <MdRadio className="h-10 w-10" />
+        <h1>nothing</h1>
       )}
 
       <div>{props.name}</div>
-      <a target="_blank" href={props.homepage}>
+      {/* <a target="_blank" href={props.homepage}>
         <BiHomeSmile />
-      </a>
+      </a> */}
     </div>
   );
 };

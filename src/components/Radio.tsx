@@ -1,12 +1,21 @@
+import { BiHomeSmile } from "react-icons/Bi";
+import { MdRadio } from "react-icons/md";
+
 const Radio = (props) => {
   return (
     <div
-      className="flex bg-sky-200 m-2 justify-between"
-      onClick={() => props.handleCurrRadio(props.name, props.url)}
+      className="flex bg-sky-200 m-2 justify-between h-10"
+      onClick={() => props.handleCurrRadio(props.radio)}
     >
+      {props.favicon ? (
+        <img src={props.favicon} className="object-cover h-10 w-10" />
+      ) : (
+        <MdRadio className="h-10 w-10" />
+      )}
+
       <div>{props.name}</div>
       <a target="_blank" href={props.homepage}>
-        HomePage
+        <BiHomeSmile />
       </a>
     </div>
   );

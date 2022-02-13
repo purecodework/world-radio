@@ -18,8 +18,26 @@ const useRadioBrowser = () => {
   let initQuery = {
     countryCode: "US",
     tagList: ["jazz"],
-    offset: 1,
-    limit: 10,
+    offset: 0,
+    limit: 30,
+    lastCheckOk: true,
+  };
+
+  const cleanData = (data) => {
+    // filter: clean out radios that does not have a icon
+    let newData = [...data].filter((x) => x.favicon != "");
+    // clean duplicate stations by comparing station names and homepages
+    for (let i = 0; i < newData.length - 1; i++)
+      if (
+        // station names to lower case, remove space
+        newData[i].name.toLowerCase().replace(/ /g, "") ===
+          newData[i + 1].name.toLowerCase().replace(/ /g, "") ||
+        // compare homepage
+        newData[i].homepage === newData[i + 1].homepage
+      ) {
+        newData.splice(i, 1);
+      }
+    return newData;
   };
 
   const getStations = async (query: queryParams) => {
@@ -35,9 +53,9 @@ const useRadioBrowser = () => {
           limit: query.limit,
         })
         .then((data) => {
-          console.log(data);
+          let cleanedData = cleanData(data);
           setIsLoading(false);
-          setRadios(data);
+          setRadios(cleanedData);
         });
     } catch (e) {
       console.log(e);

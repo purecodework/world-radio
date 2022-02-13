@@ -14,13 +14,16 @@ const SearchList = (props) => {
       <div className="radio-list">
         Search List:
         {props.radios &&
-          props.radios.map((radio) => (
+          props.radios.map((radio, index) => (
             <Radio
-              key={radio.id}
+              radio={radio}
+              key={index}
+              index={index}
               name={radio.name}
               url={radio.urlResolved}
               homepage={radio.homepage}
               tags={radio.tags}
+              favicon={radio.favicon}
               handleCurrRadio={props.handleCurrRadio}
             />
           ))}

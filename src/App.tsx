@@ -10,7 +10,21 @@ import { useState } from "react";
 
 const App = () => {
   const { value, toggleValue } = useToggle();
-  const { getStations, isLoading, radios } = useRadioBrowser();
+
+  const [query, setQuery] = useState({
+    countryCode: "US",
+    tagList: ["jazz"],
+    offset: 0,
+    limit: 50,
+    lastCheckOk: true,
+  });
+
+  const scrollLoading = () => {
+    console.log("scroll loading called");
+    setQuery({ ...query, offset: query.offset + 1 });
+  };
+
+  const { getStations, isLoading, radios } = useRadioBrowser(query);
 
   //index
   const [currRadio, setCurrRadio] = useState({});
@@ -25,7 +39,11 @@ const App = () => {
       {value ? (
         <CollectionList />
       ) : (
-        <SearchList radios={radios} handleCurrRadio={handleCurrRadio} />
+        <SearchList
+          radios={radios}
+          handleCurrRadio={handleCurrRadio}
+          scrollLoading={scrollLoading}
+        />
       )}
       {currRadio ? <p>On air... {currRadio.name} </p> : null}
       <div className="flex w-4/5">

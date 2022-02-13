@@ -12,16 +12,16 @@ interface queryParams {
   limit: number;
 }
 
-const useRadioBrowser = () => {
+const useRadioBrowser = (query) => {
   const [isLoading, setIsLoading] = useState(false);
   const [radios, setRadios] = useState([{}]);
-  let initQuery = {
-    countryCode: "US",
-    tagList: ["jazz"],
-    offset: 0,
-    limit: 30,
-    lastCheckOk: true,
-  };
+  // let initQuery = {
+  //   countryCode: "US",
+  //   tagList: ["jazz"],
+  //   offset: 0,
+  //   limit: 50,
+  //   lastCheckOk: true,
+  // };
 
   const cleanData = (data) => {
     // filter: clean out radios that does not have a icon
@@ -63,8 +63,8 @@ const useRadioBrowser = () => {
   };
   // set init stations
   useEffect(() => {
-    getStations(initQuery);
-  }, []);
+    getStations(query);
+  }, [query]);
 
   return { getStations, isLoading, radios };
 };

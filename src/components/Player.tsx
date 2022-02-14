@@ -1,20 +1,23 @@
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import customPlayer from "../styles/customPlayer.css";
 
+import { AiOutlineStar } from "react-icons/ai";
 const Player = (props) => {
   return (
-    <div className="flex bg-none border-none shadow-none ">
+    <div className="flex bg-none border-none shadow w-full max-w-sm mb-2 ">
       <AudioPlayer
-        className="flex items-center border-none shadow-none"
-        src={props.url}
-        customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
+        className="flex  border-none shadow-none "
+        src={props.radio.urlResolved}
+        customControlsSection={[
+          <img src={props.radio.favicon} className="object-cover h-10 w-10" />,
+          <div className="overflow-hidden">on air...{props.radio.name} </div>,
+          <AiOutlineStar size={25} />,
+          RHAP_UI.MAIN_CONTROLS,
+        ]}
         customProgressBarSection={[]}
         showJumpControls={false}
         onPlay={(e) => console.log("onPlay")}
-      />
-      <AiOutlineStar className="h-full" />
+      ></AudioPlayer>
     </div>
   );
 };

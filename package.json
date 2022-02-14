@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
     "autoprefixer": "^10.4.2",
+    "framer-motion": "^6.2.6",
     "postcss": "^8.4.6",
     "radio-browser-api": "^5.0.0",
     "react": "^17.0.2",

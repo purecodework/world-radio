@@ -1,7 +1,6 @@
 import SearchBar from "../SearchBar";
 import Radio from "../Radio";
 import useRadioBrowser from "../../hooks/useRadioBrowser";
-import { RadioGroup } from "@headlessui/react";
 import { useState, useRef } from "react";
 
 const SearchList = (props) => {
@@ -25,7 +24,6 @@ const SearchList = (props) => {
       onScroll={onScroll}
       ref={node}
     >
-      Search List:
       {props.radios &&
         props.radios.map((radio, index) => (
           <Radio

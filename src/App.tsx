@@ -44,12 +44,7 @@ const App = () => {
           scrollLoading={scrollLoading}
         />
       )}
-      {currRadio ? (
-        <p className="w-full overflow-x-scroll">
-          On air... {currRadio.name} {currRadio.state} {currRadio.country}
-        </p>
-      ) : null}
-      <Player url={currRadio.urlResolved} />
+      <Player radio={currRadio} />
     </div>
   );
 };

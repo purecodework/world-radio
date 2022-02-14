@@ -3,21 +3,23 @@ import { Switch } from "@headlessui/react";
 
 const SwitchButton = (props) => {
   return (
-    <div className="p-5">
-      <span>Search</span>
+    <div className="p-5 flex">
+      Explore
       <Switch
         checked={props.value}
         onChange={props.toggleValue}
-        className={`${props.value ? "bg-teal-900" : "bg-teal-700"}
-          relative inline-flex flex-shrink-0 h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+        className={`${
+          props.value ? "bg-blue-600" : "bg-gray-200"
+        } relative inline-flex items-center h-6 rounded-full w-11`}
       >
         <span
           aria-hidden="true"
-          className={`${props.value ? "translate-x-0" : "translate-x-9"}
-            pointer-events-none inline-block h-[34px] w-[34px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
+          className={`${
+            props.value ? "translate-x-6" : "translate-x-1"
+          } inline-block w-4 h-4 transform bg-white rounded-full`}
         />
       </Switch>
-      <span>Collections</span>
+      Collection
     </div>
   );
 };

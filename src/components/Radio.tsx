@@ -17,11 +17,11 @@ const Radio = (props) => {
 
       <div className="ml-5">
         <p className="text-sm">{props.name}</p>
-        <div className="text-xs overflow-x-scroll ">
+        <div className="text-xs p-1 ">
           {props.state ? props.state + "," : ""} {props.countryCode}
           {props.tags &&
             props.tags.map((tag: string) => (
-              <span key={tag} className="bg-slate-200 rounded-lg m-1 p-1">
+              <span key={tag} className="bg-slate-200 rounded-lg">
                 {tag}
               </span>
             ))}

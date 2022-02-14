@@ -9,6 +9,7 @@ const SearchList = (props) => {
   const scrollLoading = props.scrollLoading;
 
   const onScroll = () => {
+    console.log("scrolling...");
     if (node.current) {
       const { scrollTop, scrollHeight, clientHeight } = node.current;
       if (scrollTop + clientHeight === scrollHeight) {

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { RadioBrowserApi } from "radio-browser-api";
+import cleanData from "../utilities/cleanData";
 /**
  *  return isLoading, sendRequest()
  *  sendRequest takes url, method, body, and headers, return json response
@@ -23,23 +24,6 @@ const useRadioBrowser = (query) => {
   //   lastCheckOk: true,
   // };
 
-  const cleanData = (data) => {
-    // filter: clean out radios that does not have a icon
-    let newData = [...data].filter((x) => x.favicon != "");
-    // clean duplicate stations by comparing station names and homepages
-    for (let i = 0; i < newData.length - 1; i++)
-      if (
-        // station names to lower case, remove space
-        newData[i].name.toLowerCase().replace(/ /g, "") ===
-          newData[i + 1].name.toLowerCase().replace(/ /g, "") ||
-        // compare homepage
-        newData[i].homepage === newData[i + 1].homepage
-      ) {
-        newData.splice(i, 1);
-      }
-    return newData;
-  };
-
   const getStations = async (query: queryParams) => {
     try {
       setIsLoading(true);
@@ -56,7 +40,7 @@ const useRadioBrowser = (query) => {
           let cleanedData = cleanData(data);
           console.log(cleanedData);
           setIsLoading(false);
-          setRadios(cleanedData);
+          setRadios([...radios, ...cleanedData]);
         });
     } catch (e) {
       console.log(e);

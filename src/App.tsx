@@ -1,5 +1,5 @@
 import useRadioBrowser from "./hooks/useRadioBrowser";
-import Indicator from "./components/Indicator";
+// import Indicator from "./components/Indicator";
 import useToggle from "./hooks/useToggle";
 import SwitchButton from "./components/SwitchButton";
 import SearchList from "./components/SearchList/SearchList";
@@ -32,7 +32,7 @@ const App = () => {
   };
   return (
     <div className="App flex flex-col items-center justify-content h-screen w-screen">
-      <Indicator />
+      {/* <Indicator /> */}
 
       <SwitchButton value={value} toggleValue={toggleValue} />
       {value ? (

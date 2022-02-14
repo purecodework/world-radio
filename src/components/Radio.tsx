@@ -21,7 +21,9 @@ const Radio = (props) => {
           {props.countryCode}{" "}
           {props.tags &&
             props.tags.map((tag: string) => (
-              <span className="bg-slate-200 rounded-lg m-1 p-1">{tag}</span>
+              <span key={tag} className="bg-slate-200 rounded-lg m-1 p-1">
+                {tag}
+              </span>
             ))}
         </p>
       </div>

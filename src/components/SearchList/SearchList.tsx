@@ -34,6 +34,7 @@ const SearchList = (props) => {
             name={radio.name}
             url={radio.urlResolved}
             homepage={radio.homepage}
+            state={radio.state}
             countryCode={radio.countryCode}
             tags={radio.tags}
             favicon={radio.favicon}

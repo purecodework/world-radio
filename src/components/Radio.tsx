@@ -1,8 +1,6 @@
 // import { BiHomeSmile } from "react-icons/Bi";
 // import { MdRadio } from "react-icons/md";
 
-import { RadioGroup } from "@headlessui/react";
-
 const Radio = (props) => {
   return (
     <div
@@ -10,26 +8,28 @@ const Radio = (props) => {
       onClick={() => props.handleCurrRadio(props.radio)}
     >
       {props.favicon ? (
-        <img src={props.favicon} className="object-cover h-10 w-10" />
+        <a target="_blank" href={props.homepage}>
+          <img src={props.favicon} className="object-cover h-14 w-14" />
+        </a>
       ) : (
-        <h1>nothing</h1>
+        <p></p>
       )}
 
       <div className="ml-5">
         <p className="text-sm">{props.name}</p>
-        <p className="text-xs overflow-x-scroll ">
-          {props.countryCode}{" "}
+        <div className="text-xs overflow-x-scroll ">
+          {props.state ? props.state + "," : ""} {props.countryCode}
           {props.tags &&
             props.tags.map((tag: string) => (
               <span key={tag} className="bg-slate-200 rounded-lg m-1 p-1">
                 {tag}
               </span>
             ))}
-        </p>
+        </div>
       </div>
-      {/* <a target="_blank" href={props.homepage}>
+      {/* 
         <BiHomeSmile />
-      </a> */}
+       */}
     </div>
   );
 };

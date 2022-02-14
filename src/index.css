@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rhap_container {
+}
+
+@layer utilities {
+  .rhap_container {
+  }
+}

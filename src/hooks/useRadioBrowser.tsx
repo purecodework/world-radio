@@ -15,7 +15,7 @@ interface queryParams {
 
 const useRadioBrowser = (query) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [radios, setRadios] = useState([{}]);
+  const [radios, setRadios] = useState([]);
   // let initQuery = {
   //   countryCode: "US",
   //   tagList: ["jazz"],

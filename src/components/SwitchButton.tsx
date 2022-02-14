@@ -3,7 +3,7 @@ import { Switch } from "@headlessui/react";
 
 const SwitchButton = (props) => {
   return (
-    <div className="py-16">
+    <div className="p-5">
       <span>Search</span>
       <Switch
         checked={props.value}

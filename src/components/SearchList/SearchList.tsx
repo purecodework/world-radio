@@ -20,7 +20,7 @@ const SearchList = (props) => {
 
   return (
     <div
-      className="radio-list h-80 overflow-scroll"
+      className="radio-list h-96 h-5/6 w-5/6 overflow-scroll overflow-x-hidden"
       onScroll={onScroll}
       ref={node}
     >
@@ -34,6 +34,7 @@ const SearchList = (props) => {
             name={radio.name}
             url={radio.urlResolved}
             homepage={radio.homepage}
+            countryCode={radio.countryCode}
             tags={radio.tags}
             favicon={radio.favicon}
             handleCurrRadio={props.handleCurrRadio}

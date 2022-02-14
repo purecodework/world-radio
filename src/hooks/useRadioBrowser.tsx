@@ -54,6 +54,7 @@ const useRadioBrowser = (query) => {
         })
         .then((data) => {
           let cleanedData = cleanData(data);
+          console.log(cleanedData);
           setIsLoading(false);
           setRadios(cleanedData);
         });

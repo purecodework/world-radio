@@ -12,13 +12,12 @@ const Radio = (props) => {
         props.handleCurrRadio(props.radio), toggleValue();
       }}
     >
-      {props.favicon ? (
-        <a className="" target="_blank" href={props.homepage}>
-          <img src={props.favicon} className="object-cover h-14 w-14" />
-        </a>
-      ) : null}
+      <a className="" target="_blank" href={props.homepage}>
+        <img src={props.favicon} className="object-cover h-14 w-14" />
+      </a>
 
-      <div className="ml-5">
+      <div className="ml-3 w-4/5 ">
+        {/* radio name */}
         <p
           className={`${
             props.id === props.currId ? "text-blue-600" : ""
@@ -26,13 +25,18 @@ const Radio = (props) => {
         >
           {props.name}
         </p>
-        <div className="text-xs p-1">
-          {props.state ? (
-            <span className="text-slate-500">{props.state}, </span>
-          ) : null}
-          <span className="text-slate-500 overflow-x-hidden">
+
+        {/* radio info */}
+        <p className="text-xs p-1 overflow-x-scroll no-scrollbar whitespace-nowrap">
+          {/* radio location */}
+          <span className="text-slate-500">
+            {props.state ? props.state + "," : null}{" "}
+          </span>
+          <span className="text-slate-500 overflow-x-hidden mr-1">
             {props.countryCode}
           </span>
+
+          {/* radio tags */}
           {props.tags &&
             props.tags.map((tag: string) => (
               <span
@@ -42,11 +46,8 @@ const Radio = (props) => {
                 {tag}
               </span>
             ))}
-        </div>
+        </p>
       </div>
-      {/* 
-        <BiHomeSmile />
-       */}
     </div>
   );
 };

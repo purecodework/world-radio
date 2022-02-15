@@ -19,7 +19,7 @@ const SearchList = (props) => {
 
   return (
     <div
-      className="radio-list h-96 h-5/6 w-5/6 overflow-scroll overflow-x-hidden"
+      className="radio-list h-96 h-5/6 w-5/6 overflow-scroll overflow-x-hidden no-scrollbar"
       onScroll={onScroll}
       ref={node}
     >

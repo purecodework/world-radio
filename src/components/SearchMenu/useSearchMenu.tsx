@@ -12,14 +12,15 @@ export const useSearchMenu = () => {
   const handleCountryCode = (e) => {
     setNewQuery((prev) => ({ ...prev, countryCode: e.target.value }));
   };
-  const handleTagList = (e) => {
-    setNewQuery((prev) => ({ ...prev, tagList: e.target.value }));
+  const handleTag = (e) => {
+    setNewQuery((prev) => ({ ...prev, tag: e.target.value }));
   };
 
   return {
     newQuery,
     handleName,
     handleCountryCode,
-    handleTagList,
+    handleTag,
+    // handleSearch,
   };
 };

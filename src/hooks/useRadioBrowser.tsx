@@ -8,7 +8,7 @@ import cleanData from "../utilities/cleanData";
 
 interface queryParams {
   countryCode: string;
-  tagList: string[];
+  tag: string;
   offset: number;
   limit: number;
 }
@@ -17,9 +17,8 @@ const useRadioBrowser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [radios, setRadios] = useState([]);
   const [query, setQuery] = useState({
-    name: "",
-    countryCode: "AU",
-    tagList: ["Music"],
+    countryCode: "US",
+    tag: "jazz",
     offset: 30,
     limit: 30,
     lastCheckOk: true,
@@ -46,7 +45,7 @@ const useRadioBrowser = () => {
       resData = await api
         .searchStations({
           countryCode: query.countryCode,
-          tagList: query.tagList,
+          tag: query.tag,
           offset: query.offset,
           limit: query.limit,
         })

@@ -5,7 +5,7 @@ import { useSearchMenu } from "./useSearchMenu";
 
 export const SearchMenu = (props) => {
   const { value, toggleValue } = useToggle();
-  const { newQuery, handleName, handleCountryCode, handleTagList } =
+  const { newQuery, handleName, handleCountryCode, handleTag } =
     useSearchMenu();
 
   return (
@@ -34,7 +34,7 @@ export const SearchMenu = (props) => {
           <label>
             Tag
             <input
-              onChange={handleTagList}
+              onChange={handleTag}
               type="text"
               name="Tag"
               placeholder="Jazz"

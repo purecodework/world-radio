@@ -26,13 +26,10 @@ const useLocalStorage = (key = "radios") => {
 
   // add new item to local storage
   const setItem = (currRadio) => {
-    console.log("set item");
     if (isValid(currRadio)) {
-      console.log("valid");
       storage.setItem(key, JSON.stringify([...localStorage, currRadio]));
       setLocalStorage((prev) => [...prev, currRadio]);
     } else {
-      console.log("not valid");
       return;
     }
   };
@@ -41,7 +38,6 @@ const useLocalStorage = (key = "radios") => {
   const removeItem = (currRadio) => {
     const newLocalStorage = localStorage.filter((x) => x.id !== currRadio.id);
     storage.setItem(key, JSON.stringify(newLocalStorage));
-    console.log("removed");
     setLocalStorage(newLocalStorage);
   };
 

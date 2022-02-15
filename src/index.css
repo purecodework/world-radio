@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.rhap_container {
-}
-
 @layer utilities {
-  .rhap_container {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

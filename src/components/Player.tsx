@@ -10,7 +10,9 @@ const Player = (props) => {
         src={props.radio.urlResolved}
         customControlsSection={[
           <img src={props.radio.favicon} className="object-cover h-10 w-10" />,
-          <div className="overflow-hidden">on air...{props.radio.name} </div>,
+          <p className="overflow-hidden w-3/5 no-scrollbar whitespace-nowrap">
+            {props.radio ? props.radio.name : null}
+          </p>,
           <Star radio={props.radio} />,
           RHAP_UI.MAIN_CONTROLS,
         ]}

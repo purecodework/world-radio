@@ -2,6 +2,7 @@ import SearchBar from "../SearchBar";
 import Radio from "../Radio";
 import useRadioBrowser from "../../hooks/useRadioBrowser";
 import { useState, useRef } from "react";
+import { SearchMenu } from "../SearchMenu/SearchMenu";
 
 const SearchList = (props) => {
   const node = useRef();
@@ -24,11 +25,14 @@ const SearchList = (props) => {
       onScroll={onScroll}
       ref={node}
     >
+      <SearchMenu handleNewQuery={props.handleNewQuery} />
       {props.radios &&
         props.radios.map((radio, index) => (
           <Radio
             radio={radio}
             key={index}
+            currId={props.currId}
+            id={radio.id}
             index={index}
             name={radio.name}
             url={radio.urlResolved}

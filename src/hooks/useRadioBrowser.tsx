@@ -13,16 +13,25 @@ interface queryParams {
   limit: number;
 }
 
-const useRadioBrowser = (query) => {
+const useRadioBrowser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [radios, setRadios] = useState([]);
-  // let initQuery = {
-  //   countryCode: "US",
-  //   tagList: ["jazz"],
-  //   offset: 0,
-  //   limit: 50,
-  //   lastCheckOk: true,
-  // };
+  const [query, setQuery] = useState({
+    name: "",
+    countryCode: "AU",
+    tagList: ["Music"],
+    offset: 30,
+    limit: 30,
+    lastCheckOk: true,
+  });
+  const scrollLoading = () => {
+    setQuery({ ...query, offset: query.offset + 30 });
+  };
+
+  const handleNewQuery = (newQuery) => {
+    setRadios("");
+    setQuery(newQuery);
+  };
 
   const getStations = async (query: queryParams) => {
     try {
@@ -51,7 +60,16 @@ const useRadioBrowser = (query) => {
     getStations(query);
   }, [query]);
 
-  return { getStations, isLoading, radios };
+  return {
+    setRadios,
+    scrollLoading,
+    query,
+    setQuery,
+    getStations,
+    isLoading,
+    radios,
+    handleNewQuery,
+  };
 };
 
 export default useRadioBrowser;

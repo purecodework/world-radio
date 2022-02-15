@@ -4,9 +4,9 @@ import "react-h5-audio-player/lib/styles.css";
 import { AiOutlineStar } from "react-icons/ai";
 const Player = (props) => {
   return (
-    <div className="flex bg-none border-none shadow w-full max-w-sm mb-2 ">
+    <div className="flex bg-none border-none  w-full max-w-sm mb-2 ">
       <AudioPlayer
-        className="flex  border-none shadow-none "
+        className="flex  border-none shadow rounded-lg"
         src={props.radio.urlResolved}
         customControlsSection={[
           <img src={props.radio.favicon} className="object-cover h-10 w-10" />,

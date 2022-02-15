@@ -17,26 +17,29 @@ export const SearchMenu = (props) => {
           <label>Station Name</label>
           <input
             className="focus:outline-none border rounded text-sm p-1"
+            value={newQuery.name}
             onChange={handleName}
             type="text"
             name="Station Name"
             placeholder="FM 102"
           />
-          <label>Country Code</label>
+          <label>Search Tag</label>
           <input
             className="focus:outline-none  border rounded text-sm p-1"
-            onChange={handleCountryCode}
-            type="text"
-            name="Country Code"
-            placeholder="AU"
-          />
-          <label>Tag</label>
-          <input
-            className="focus:outline-none  border rounded text-sm p-1"
+            value={newQuery.tag}
             onChange={handleTag}
             type="text"
             name="Tag"
             placeholder="Jazz"
+          />
+          <label>Country Code</label>
+          <input
+            className="focus:outline-none  border rounded text-sm p-1"
+            value={newQuery.countryCode}
+            onChange={handleCountryCode}
+            type="text"
+            name="Country Code"
+            placeholder="AU"
           />
 
           <button

@@ -7,6 +7,7 @@ import cleanData from "../utilities/cleanData";
  */
 
 interface queryParams {
+  name: string;
   countryCode: string;
   tag: string;
   offset: number;
@@ -17,8 +18,9 @@ const useRadioBrowser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [radios, setRadios] = useState([]);
   const [query, setQuery] = useState({
-    countryCode: "US",
-    tag: "jazz",
+    countryCode: "",
+    tag: "",
+    name: "",
     offset: 30,
     limit: 30,
     lastCheckOk: true,
@@ -37,24 +39,53 @@ const useRadioBrowser = () => {
     setQuery(newQuery);
   };
 
+  /**
+   * @param query
+   * countryCode: something is inconsistency with the original API
+   * countryCode with empty String will return radios whose countryCode is empty
+   * NOT ALL Countries
+   * This works differently from "state" query parameter
+   * tried countryCode = * and undefined, not works
+   * Have to make a separate query
+   */
+
   const getStations = async (query: queryParams) => {
     try {
       setIsLoading(true);
       const api = new RadioBrowserApi("world-radio");
       let resData;
-      resData = await api
-        .searchStations({
-          countryCode: query.countryCode,
-          tag: query.tag,
-          offset: query.offset,
-          limit: query.limit,
-        })
-        .then((data) => {
-          let cleanedData = cleanData(data);
-          console.log(cleanedData);
-          setIsLoading(false);
-          setRadios([...radios, ...cleanedData]);
-        });
+      // Did user input for countryCode?
+      if (query.countryCode) {
+        resData = await api
+          .searchStations({
+            countryCode: query.countryCode,
+            name: query.name,
+            tag: query.tag,
+            offset: query.offset,
+            limit: query.limit,
+          })
+          .then((data) => {
+            let cleanedData = cleanData(data);
+            console.log(cleanedData);
+            setIsLoading(false);
+            setRadios([...radios, ...cleanedData]);
+          });
+      } else {
+        // query without country code
+        resData = await api
+          .searchStations({
+            name: query.name,
+            tag: query.tag,
+            offset: query.offset,
+            limit: query.limit,
+          })
+          .then((data) => {
+            let cleanedData = cleanData(data);
+            console.log(cleanedData);
+            setIsLoading(false);
+            setRadios([...radios, ...cleanedData]);
+          });
+      }
     } catch (e) {
       console.log(e);
     }

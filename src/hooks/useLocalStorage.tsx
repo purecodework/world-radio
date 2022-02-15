@@ -1,4 +1,3 @@
-import PreviousMap from "postcss/lib/previous-map";
 import React, { useEffect } from "react";
 import { useState } from "react";
 
@@ -11,11 +10,14 @@ const useLocalStorage = (key = "radios") => {
   const [localStorage, setLocalStorage] = useState(
     radioStorage ? radioStorage : []
   );
+  // check if item exist in local storage
+  const isExist = (value) => localStorage.some((x) => x.id === value.id);
 
-  // check if item valid and if exist
-  const isValid = (value: {}) => {
-    const isExist = localStorage.some((x) => x.id === value.id);
-    if (isExist === false && value) {
+  // check if item valid
+  const isValid = (value) => {
+    console.log(JSON.stringify(value));
+
+    if (isExist(value) === false && value) {
       return true;
     } else {
       return false;
@@ -26,9 +28,11 @@ const useLocalStorage = (key = "radios") => {
   const setItem = (currRadio) => {
     console.log("set item");
     if (isValid(currRadio)) {
+      console.log("valid");
       storage.setItem(key, JSON.stringify([...localStorage, currRadio]));
       setLocalStorage((prev) => [...prev, currRadio]);
     } else {
+      console.log("not valid");
       return;
     }
   };
@@ -41,7 +45,7 @@ const useLocalStorage = (key = "radios") => {
     setLocalStorage(newLocalStorage);
   };
 
-  return { localStorage, setItem, removeItem };
+  return { isExist, localStorage, setItem, removeItem };
 };
 
 export default useLocalStorage;

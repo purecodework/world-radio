@@ -20,7 +20,6 @@ const Radio = (props) => {
 
       <div className="ml-5">
         <p
-          // className={` text-sm semi-bold p-1`}
           className={`${
             props.id === props.currId ? "text-blue-600" : ""
           } text-sm semi-bold p-1`}

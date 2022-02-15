@@ -1,7 +1,7 @@
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import Star from "./Star";
 
-import { AiOutlineStar } from "react-icons/ai";
 const Player = (props) => {
   return (
     <div className="flex bg-none border-none  w-full max-w-sm mb-2 ">
@@ -11,7 +11,7 @@ const Player = (props) => {
         customControlsSection={[
           <img src={props.radio.favicon} className="object-cover h-10 w-10" />,
           <div className="overflow-hidden">on air...{props.radio.name} </div>,
-          <AiOutlineStar size={25} />,
+          <Star radio={props.radio} />,
           RHAP_UI.MAIN_CONTROLS,
         ]}
         customProgressBarSection={[]}

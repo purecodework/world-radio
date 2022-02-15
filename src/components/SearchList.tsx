@@ -1,8 +1,6 @@
-import SearchBar from "../SearchBar";
-import Radio from "../Radio";
-import useRadioBrowser from "../../hooks/useRadioBrowser";
-import { useState, useRef } from "react";
-import { SearchMenu } from "../SearchMenu/SearchMenu";
+import Radio from "../components/Radio";
+import { useRef } from "react";
+import { SearchMenu } from "./SearchMenu/SearchMenu";
 
 const SearchList = (props) => {
   const node = useRef();

@@ -24,6 +24,11 @@ const useRadioBrowser = () => {
     limit: 30,
     lastCheckOk: true,
   });
+  const [currRadio, setCurrRadio] = useState(radios[0]);
+  const handleCurrRadio = (radio) => {
+    setCurrRadio(radio);
+  };
+
   const scrollLoading = () => {
     setQuery({ ...query, offset: query.offset + 30 });
   };
@@ -61,6 +66,9 @@ const useRadioBrowser = () => {
   }, [query]);
 
   return {
+    currRadio,
+    setCurrRadio,
+    handleCurrRadio,
     setRadios,
     scrollLoading,
     query,

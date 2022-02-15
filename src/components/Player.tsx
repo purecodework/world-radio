@@ -4,13 +4,14 @@ import Star from "./Star";
 
 const Player = (props) => {
   return (
-    <div className="flex bg-none border-none  w-full max-w-sm mb-2 ">
+    <div className="flex border-none w-full max-w-sm mb-2 ">
       <AudioPlayer
-        className="flex  border-none shadow rounded-lg"
+        className="flex border-none shadow rounded-lg items-center"
         src={props.radio.urlResolved}
         customControlsSection={[
           <img src={props.radio.favicon} className="object-cover h-10 w-10" />,
-          <p className="overflow-hidden w-3/5 no-scrollbar whitespace-nowrap">
+          <p className="overflow-hidden w-3/5 no-scrollbar whitespace-nowrap text-sm">
+            <p>On air now:</p>
             {props.radio ? props.radio.name : null}
           </p>,
           <Star radio={props.radio} />,

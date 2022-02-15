@@ -5,7 +5,7 @@ const Star = (props) => {
   const { isExist, localStorage, setItem, removeItem } = useLocalStorage();
   return isExist(props.radio) ? (
     <AiFillStar
-      size={25}
+      size={30}
       fill="orange"
       onClick={() => {
         removeItem(props.radio);
@@ -13,7 +13,7 @@ const Star = (props) => {
     />
   ) : (
     <AiOutlineStar
-      size={25}
+      size={30}
       fill="orange"
       onClick={() => {
         setItem(props.radio);

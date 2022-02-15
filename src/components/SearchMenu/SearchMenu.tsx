@@ -21,7 +21,7 @@ export const SearchMenu = (props) => {
             onChange={handleName}
             type="text"
             name="Station Name"
-            placeholder="FM 102"
+            placeholder="BBC"
           />
           <label>Search Tag</label>
           <input

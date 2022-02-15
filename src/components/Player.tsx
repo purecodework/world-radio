@@ -1,15 +1,32 @@
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import Star from "./Star";
+import useToggle from "../hooks/useToggle";
 
 const Player = (props) => {
+  const { value, toggleValue } = useToggle();
   return (
-    <div className="flex border-none w-full max-w-sm mb-2 ">
+    <div
+      className={`${
+        value ? "absolute h-screen w-screen z-10 bg-sky-200" : "w-full max-w-sm"
+      }`}
+    >
+      <div
+        className={`${
+          value ? "h-full  flex items-center justify-center" : "hidden"
+        }`}
+      >
+        <img src={props.radio.favicon} className="object-cover h-80 w-80" />
+      </div>
       <AudioPlayer
-        className=""
+        className={`${
+          value
+            ? "left-0 right-0 w-50 absolute bottom-0 max-w-sm m-auto mb-2"
+            : ""
+        }`}
         src={props.radio.urlResolved}
         customControlsSection={[
-          <div className="flex w-4/5 items-center">
+          <div className="flex w-4/5 items-center" onClick={toggleValue}>
             <img src={props.radio.favicon} className="object-cover h-10 w-10" />
             <p className="overflow-hidden w-3/5 no-scrollbar whitespace-nowrap text-sm mx-5">
               <p className="text-slate-500">On air now:</p>

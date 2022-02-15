@@ -19,7 +19,7 @@ const useRadioBrowser = () => {
   const [radios, setRadios] = useState([]);
   const [query, setQuery] = useState({
     countryCode: "",
-    tag: "",
+    tag: "Jazz",
     name: "",
     offset: 30,
     limit: 30,
@@ -54,7 +54,7 @@ const useRadioBrowser = () => {
       setIsLoading(true);
       const api = new RadioBrowserApi("world-radio");
       let resData;
-      // Did user input for countryCode?
+      // query with countryCode?
       if (query.countryCode) {
         resData = await api
           .searchStations({

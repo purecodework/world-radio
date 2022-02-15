@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 @layer utilities {
+  /* overwrite player container class */
+
+  .rhap_container {
+    bottom: 0px;
+    width: 80% !important;
+  }
+
+  .wtf {
+  }
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

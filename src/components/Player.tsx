@@ -17,7 +17,7 @@ const Player = (props) => {
         customProgressBarSection={[]}
         showJumpControls={false}
         onPlay={(e) => console.log("onPlay")}
-      ></AudioPlayer>
+      />
     </div>
   );
 };

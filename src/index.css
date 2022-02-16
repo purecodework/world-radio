@@ -8,6 +8,7 @@
   .rhap_container {
     bottom: 0px;
     width: 80% !important;
+    background-color: initial;
   }
 
   .wtf {

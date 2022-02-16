@@ -13,7 +13,7 @@ export const SearchMenu = (props) => {
         <AiOutlineSearch size={20} className="ml-2 text-slate-500" />
       </button>
       {value && (
-        <div className="flex flex-col text-sm w-1/2 mb-2">
+        <div className="flex flex-col text-sm w-1/2 mb-2 md:w-1/4">
           <label>Station Name</label>
           <input
             className="focus:outline-none border rounded text-sm p-1"
@@ -48,7 +48,7 @@ export const SearchMenu = (props) => {
             placeholder="Jazz"
             onClick={() => props.handleNewQuery(newQuery)}
           >
-            Go
+            Tune in
           </button>
         </div>
       )}

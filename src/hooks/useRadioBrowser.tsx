@@ -3,7 +3,7 @@ import { RadioBrowserApi } from "radio-browser-api";
 import cleanData from "../utilities/cleanData";
 /**
  *  return isLoading, sendRequest()
- *  sendRequest takes url, method, body, and headers, return json response
+ *
  */
 
 interface queryParams {
@@ -78,6 +78,7 @@ const useRadioBrowser = () => {
             tag: query.tag,
             offset: query.offset,
             limit: query.limit,
+            removeDuplicates: true,
           })
           .then((data) => {
             let cleanedData = cleanData(data);

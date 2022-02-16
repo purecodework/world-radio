@@ -1,21 +1,22 @@
 import useLocalStorage from "../hooks/useLocalStorage";
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const Star = (props) => {
   const { isExist, localStorage, setItem, removeItem } = useLocalStorage();
   return isExist(props.radio) ? (
-    <AiFillStar
-      size={30}
-      fill="orange"
-      onClick={() => {
+    <AiFillHeart
+      size={25}
+      fill="#ff4040"
+      onClick={(e) => {
+        e.stopPropagation();
         removeItem(props.radio);
       }}
     />
   ) : (
-    <AiOutlineStar
-      size={30}
-      fill="orange"
-      onClick={() => {
+    <AiOutlineHeart
+      size={25}
+      onClick={(e) => {
+        e.stopPropagation();
         setItem(props.radio);
       }}
     />

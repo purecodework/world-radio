@@ -1,6 +1,6 @@
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import Star from "./Star";
+import LikeButton from "./LikeButton";
 import useToggle from "../hooks/useToggle";
 
 const Player = (props) => {
@@ -33,7 +33,7 @@ const Player = (props) => {
               <p className="text-slate-500">On air now:</p>
               {props.radio ? props.radio.name : null}
             </p>
-            <Star radio={props.radio} />
+            <LikeButton radio={props.radio} />
           </div>,
           RHAP_UI.MAIN_CONTROLS,
         ]}

@@ -1,7 +1,8 @@
 import useLocalStorage from "../hooks/useLocalStorage";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { radio } from "../types";
 
-const Star = (props) => {
+const LikeButton = (props) => {
   const { isExist, localStorage, setItem, removeItem } = useLocalStorage();
   return isExist(props.radio) ? (
     <AiFillHeart
@@ -22,4 +23,4 @@ const Star = (props) => {
     />
   );
 };
-export default Star;
+export default LikeButton;

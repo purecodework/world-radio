@@ -1,32 +1,25 @@
 import { useState, useCallback, useEffect } from "react";
 import { RadioBrowserApi } from "radio-browser-api";
 import cleanData from "../utilities/cleanData";
+import { queryParams, radio } from "../types";
 /**
  *  return isLoading, sendRequest()
  *
  */
 
-interface queryParams {
-  name: string;
-  countryCode: string;
-  tag: string;
-  offset: number;
-  limit: number;
-}
-
 const useRadioBrowser = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [radios, setRadios] = useState([]);
-  const [query, setQuery] = useState({
+  const [radios, setRadios] = useState<[radio?]>([]);
+  const [query, setQuery] = useState<queryParams>({
     countryCode: "",
     tag: "Jazz",
     name: "",
     offset: 30,
     limit: 30,
-    lastCheckOk: true,
   });
-  const [currRadio, setCurrRadio] = useState(radios[0]);
-  const handleCurrRadio = (radio) => {
+  const [currRadio, setCurrRadio] = useState<radio>();
+
+  const handleCurrRadio = (radio: radio) => {
     setCurrRadio(radio);
   };
 
@@ -34,8 +27,8 @@ const useRadioBrowser = () => {
     setQuery({ ...query, offset: query.offset + 30 });
   };
 
-  const handleNewQuery = (newQuery) => {
-    setRadios("");
+  const handleNewQuery = (newQuery: queryParams) => {
+    // setRadios([]);
     setQuery(newQuery);
   };
 
@@ -56,20 +49,12 @@ const useRadioBrowser = () => {
       let resData;
       // query with countryCode?
       if (query.countryCode) {
-        resData = await api
-          .searchStations({
-            countryCode: query.countryCode,
-            name: query.name,
-            tag: query.tag,
-            offset: query.offset,
-            limit: query.limit,
-          })
-          .then((data) => {
-            let cleanedData = cleanData(data);
-            console.log(cleanedData);
-            setIsLoading(false);
-            setRadios([...radios, ...cleanedData]);
-          });
+        resData = await api.searchStations(query).then((data) => {
+          let cleanedData = cleanData(data);
+          console.log(cleanedData);
+          setIsLoading(false);
+          setRadios([...radios, ...cleanedData]);
+        });
       } else {
         // query without country code
         resData = await api

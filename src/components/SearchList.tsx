@@ -1,6 +1,7 @@
 import Radio from "../components/Radio";
 import { useRef } from "react";
 import { SearchMenu } from "./SearchMenu/SearchMenu";
+import { radio } from "../types";
 
 const SearchList = (props) => {
   const node = useRef();
@@ -25,7 +26,7 @@ const SearchList = (props) => {
     >
       <SearchMenu handleNewQuery={props.handleNewQuery} />
       {props.radios &&
-        props.radios.map((radio, index) => (
+        props.radios.map((radio: radio, index: number) => (
           <Radio
             radio={radio}
             key={index}

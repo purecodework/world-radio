@@ -1,11 +1,13 @@
 import useLocalStorage from "../hooks/useLocalStorage";
 import Radio from "./Radio";
+import { queryParams, radio } from "../types";
+
 const CollectionList = (props) => {
   const { localStorage } = useLocalStorage();
   return (
     <div className="radio-list h-96 h-5/6 w-5/6 overflow-scroll overflow-x-hidden">
       {localStorage &&
-        localStorage.map((radio, index) => (
+        localStorage.map((radio: radio, index: number) => (
           <Radio
             radio={radio}
             key={index}

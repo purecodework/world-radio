@@ -1,3 +1,4 @@
+// Clean original radios fetched from API
 const cleanData = (data) => {
   // filter: clean out radios that does not have a icon
   let newData = [...data].filter((x) => x.favicon != "");

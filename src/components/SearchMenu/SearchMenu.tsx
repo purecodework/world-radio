@@ -1,7 +1,9 @@
 import useToggle from "../../hooks/useToggle";
 import { useSearchMenu } from "./useSearchMenu";
 import { AiOutlineSearch } from "react-icons/ai";
-
+/**
+ * form input and output, controlled component
+ */
 export const SearchMenu = (props) => {
   const { value, toggleValue } = useToggle();
   const { newQuery, handleName, handleCountryCode, handleTag } =
@@ -12,6 +14,7 @@ export const SearchMenu = (props) => {
       <button onClick={toggleValue}>
         <AiOutlineSearch size={20} className="ml-2 text-slate-500" />
       </button>
+
       {value && (
         <div className="flex flex-col text-sm w-1/2 mb-2 md:w-1/4">
           <label>Station Name</label>
@@ -23,6 +26,7 @@ export const SearchMenu = (props) => {
             name="Station Name"
             placeholder="BBC"
           />
+
           <label>Search Tag</label>
           <input
             className="focus:outline-none  border rounded text-sm p-1"
@@ -32,6 +36,7 @@ export const SearchMenu = (props) => {
             name="Tag"
             placeholder="Jazz"
           />
+
           <label>Country Code</label>
           <input
             className="focus:outline-none  border rounded text-sm p-1"

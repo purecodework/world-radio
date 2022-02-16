@@ -5,10 +5,11 @@ import { radio } from "../types";
 
 const SearchList = (props) => {
   const node = useRef();
+  // infinite scroll when reach to bottom
   const scrollLoading = props.scrollLoading;
 
+  // check if user scrolled list to bottom
   const onScroll = () => {
-    console.log("scrolling...");
     if (node.current) {
       const { scrollTop, scrollHeight, clientHeight } = node.current;
       if (scrollTop + clientHeight === scrollHeight) {
@@ -31,15 +32,7 @@ const SearchList = (props) => {
             radio={radio}
             key={index}
             currId={props.currId}
-            id={radio.id}
             index={index}
-            name={radio.name}
-            url={radio.urlResolved}
-            homepage={radio.homepage}
-            state={radio.state}
-            countryCode={radio.countryCode}
-            tags={radio.tags}
-            favicon={radio.favicon}
             handleCurrRadio={props.handleCurrRadio}
           />
         ))}

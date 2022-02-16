@@ -1,7 +1,13 @@
 import useLocalStorage from "../hooks/useLocalStorage";
 import Radio from "./Radio";
-import { queryParams, radio } from "../types";
-
+import { radio } from "../types";
+/**
+ * @param props
+ * currId: current playing radio ID
+ * handleCurrRadio:set current playing radio
+ *
+ * @returns collection radios list
+ */
 const CollectionList = (props) => {
   const { localStorage } = useLocalStorage();
   return (
@@ -12,16 +18,8 @@ const CollectionList = (props) => {
             radio={radio}
             key={index}
             currId={props.currId}
-            id={radio.id}
-            index={index}
-            name={radio.name}
-            url={radio.urlResolved}
-            homepage={radio.homepage}
-            state={radio.state}
-            countryCode={radio.countryCode}
-            tags={radio.tags}
-            favicon={radio.favicon}
             handleCurrRadio={props.handleCurrRadio}
+            index={index}
           />
         ))}
     </div>

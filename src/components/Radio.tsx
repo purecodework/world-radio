@@ -1,10 +1,10 @@
-// import { BiHomeSmile } from "react-icons/Bi";
-// import { MdRadio } from "react-icons/md";
 import useToggle from "../hooks/useToggle";
-
-// TODO use radio button
+/**
+ * radio element in search/collection list
+ */
 const Radio = (props) => {
-  const { value, toggleValue } = useToggle();
+  const { toggleValue } = useToggle();
+  const radio = props.radio;
   return (
     <div
       className="flex m-2  w-full items-center"
@@ -12,33 +12,33 @@ const Radio = (props) => {
         props.handleCurrRadio(props.radio), toggleValue();
       }}
     >
+      {/* radio icon */}
       <a className="" target="_blank" href={props.homepage}>
-        <img src={props.favicon} className="object-cover h-14 w-14" />
+        <img src={radio.favicon} className="object-cover h-14 w-14" />
       </a>
 
+      {/* radio name */}
       <div className="ml-3 w-4/5 ">
-        {/* radio name */}
         <p
           className={`${
-            props.id === props.currId ? "text-blue-600" : ""
+            radio.id === props.currId ? "text-blue-600" : ""
           } text-sm semi-bold p-1`}
         >
-          {props.name}
+          {radio.name}
         </p>
 
-        {/* radio info */}
+        {/* radio info: states, countryCode, tags */}
         <p className="text-xs p-1 overflow-x-scroll no-scrollbar whitespace-nowrap">
-          {/* radio location */}
           <span className="text-slate-500">
-            {props.state ? props.state + "," : null}{" "}
+            {radio.state ? props.state + "," : null}{" "}
           </span>
           <span className="text-slate-500 overflow-x-hidden mr-1">
-            {props.countryCode}
+            {radio.countryCode}
           </span>
 
           {/* radio tags */}
-          {props.tags &&
-            props.tags.map((tag: string) => (
+          {radio.tags &&
+            radio.tags.map((tag: string) => (
               <span
                 key={tag}
                 className="text-slate-500 ml-1 p-1  bg-slate-200 rounded-lg"

@@ -1,5 +1,8 @@
 import { Switch } from "@headlessui/react";
 
+/**
+ * toggle between search list and collection list
+ */
 const SwitchButton = (props) => {
   return (
     <div className="p-5 flex">

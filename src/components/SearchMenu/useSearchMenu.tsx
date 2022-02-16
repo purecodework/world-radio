@@ -1,10 +1,11 @@
 import { useState } from "react";
 import useRadioBrowser from "../../hooks/useRadioBrowser";
-
+// form input and value
 export const useSearchMenu = () => {
-  const { query, setRadios } = useRadioBrowser();
+  const { query } = useRadioBrowser();
   const [newQuery, setNewQuery] = useState(query);
-  const handleName = (e: Event) => {
+
+  const handleName = (e) => {
     setNewQuery((prev) => ({ ...prev, name: e.target.value }));
   };
   const handleCountryCode = (e) => {
@@ -19,6 +20,5 @@ export const useSearchMenu = () => {
     handleName,
     handleCountryCode,
     handleTag,
-    // handleSearch,
   };
 };

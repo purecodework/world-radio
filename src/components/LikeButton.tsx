@@ -1,9 +1,11 @@
 import useLocalStorage from "../hooks/useLocalStorage";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { radio } from "../types";
-
+/**
+ * Click on like icon to add or remove a radio from local storage
+ */
 const LikeButton = (props) => {
-  const { isExist, localStorage, setItem, removeItem } = useLocalStorage();
+  const { isExist, setItem, removeItem } = useLocalStorage();
+
   return isExist(props.radio) ? (
     <AiFillHeart
       size={25}
@@ -23,4 +25,5 @@ const LikeButton = (props) => {
     />
   );
 };
+
 export default LikeButton;

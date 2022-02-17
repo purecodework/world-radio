@@ -30,7 +30,7 @@ const Radio = (props) => {
         {/* radio info: states, countryCode, tags */}
         <p className="text-xs p-1 overflow-x-scroll no-scrollbar whitespace-nowrap">
           <span className="text-slate-500">
-            {radio.state ? props.state + "," : null}{" "}
+            {radio.state ? radio.state + "," : null}{" "}
           </span>
           <span className="text-slate-500 overflow-x-hidden mr-1">
             {radio.countryCode}

@@ -14,7 +14,7 @@ const cleanData = (data) => {
       newData.splice(i, 1);
     }
   // sort by votes
-  let sortedData = newData.sort((a, b) => a.votes - b.votes);
+  let sortedData = newData.sort((a, b) => b.votes - a.votes);
 
   return sortedData;
 };
